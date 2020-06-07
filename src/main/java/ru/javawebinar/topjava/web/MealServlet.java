@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.MealTo;
 import ru.javawebinar.topjava.util.MealsUtil;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,21 +17,17 @@ import java.util.List;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-
 public class MealServlet extends HttpServlet {
-
 
     private static final Logger log = getLogger(MealServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         List<MealTo> mealsTo = createMealsItems();
         request.setAttribute("meals", mealsTo);
 
-        log.debug("redirect to meals");
+        log.debug("get all meals");
         request.getRequestDispatcher("/meals.jsp").forward(request, response);
-        //   response.sendRedirect("users.jsp");
     }
 
     private List<MealTo> createMealsItems() {
@@ -45,9 +40,8 @@ public class MealServlet extends HttpServlet {
                 new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 13, 0), "Обед", 500),
                 new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 20, 0), "Ужин", 410)
         );
-        final LocalTime startTime = LocalTime.of(0, 0);
-        final LocalTime endTime = LocalTime.of(23, 59);
-
+        final LocalTime startTime = LocalTime.MIN;
+        final LocalTime endTime = LocalTime.MAX;
         return MealsUtil.filteredByStreams(meals, startTime, endTime, 2000);
     }
 }

@@ -9,9 +9,6 @@ public class MealTo {
 
     private final int calories;
 
-//    private final AtomicBoolean excess;      // filteredByAtomic
-//    private final Boolean excess;            // filteredByReflection
-//    private final Supplier<Boolean> excess;  // filteredByClosure
     private final boolean excess;
 
     public MealTo(LocalDateTime dateTime, String description, int calories, boolean excess) {
@@ -36,10 +33,6 @@ public class MealTo {
     public boolean isExcess() {
         return excess;
     }
-
-    //    public Boolean getExcess() {
-//        return excess.get();
-//    }
 
     @Override
     public String toString() {
