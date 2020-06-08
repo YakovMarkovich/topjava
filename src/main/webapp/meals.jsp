@@ -8,14 +8,11 @@
 
 <form method="POST" action="meals" name="formAddMeal">
     <label for="dateMeal">Date/Time :</label>
-    <input type="datetime-local" id="dateMeal" name="dateMeal" required
-           value="<c:out value="${meal.dateTime}" />" /> <br/>
+    <input type="datetime-local" id="dateMeal" name="dateMeal" required /> <br/>
     <label for="description">Description:</label>
-    <input type="text" id="description" name="description" required
-           value="<c:out value="${meal.description}" />" /> <br/>
+    <input type="text" id="description" name="description" required /> <br/>
     <label for="calories">Calories :</label>
-    <input type="number" id="calories" name="calories" required
-           value="<c:out value="${meal.calories}" />" /> <br/><br/>
+    <input type="number" id="calories" name="calories" required /> <br/><br/>
     <input type="submit" value="Submit"/>
 </form>
 
