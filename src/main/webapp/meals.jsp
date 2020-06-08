@@ -1,46 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="javatime" uri="http://sargue.net/jsptags/time" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<html lang="ru">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <style>
-        .green {
-            color: green
-        }
-
-        .red {
-            color: red
-        }
-
-        td {
-            text-align: center
-        }
-    </style>
-    <title>Meals</title>
+    <title>Add meal</title>
 </head>
 <body>
-<h3><a href="index.html">Home</a></h3>
-<hr>
-<h2>Meals</h2>
-<table border=1>
-    <thead>
-    <tr>
-        <th>DateTime</th>
-        <th>Description</th>
-        <th>Calories</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${meals}" var="meal">
-        <tr class="${meal.excess ? 'red' : 'green'}">
-            <td><javatime:format pattern="yyyy-MM-dd HH:mm" value="${meal.dateTime}"/></td>
-            <td><c:out value="${meal.description}"/></td>
-            <td><c:out value="${meal.calories}"/></td>
 
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
+<form method="POST" action="meals" name="formAddMeal">
+    <label for="dateMeal">Date/Time :</label>
+    <input type="datetime-local" id="dateMeal" name="dateMeal" required
+           value="<c:out value="${meal.dateTime}" />" /> <br/>
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" required
+           value="<c:out value="${meal.description}" />" /> <br/>
+    <label for="calories">Calories :</label>
+    <input type="number" id="calories" name="calories" required
+           value="<c:out value="${meal.calories}" />" /> <br/><br/>
+    <input type="submit" value="Submit"/>
+</form>
 
 </body>
 </html>
