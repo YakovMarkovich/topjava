@@ -8,9 +8,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MealsRepoImpl implements MealsRepo {
-
     Map<Integer, Meal> mealsMap;
-    private static AtomicInteger count = new AtomicInteger(0);
+    private AtomicInteger count = new AtomicInteger(0);
+
 
     public MealsRepoImpl() {
         mealsMap = new ConcurrentHashMap<>();
@@ -24,9 +24,7 @@ public class MealsRepoImpl implements MealsRepo {
 
     @Override
     public void updateMeal(Meal meal) {
-        Meal old = mealsMap.get(meal.id);
         mealsMap.put(meal.id, meal);
-
     }
 
     @Override
@@ -36,10 +34,7 @@ public class MealsRepoImpl implements MealsRepo {
 
     @Override
     public List<Meal> getAllMeals() {
-        List<Meal> meals = new ArrayList<>();
-        for (Meal meal : mealsMap.values()) {
-            meals.add(meal);
-        }
+        List<Meal> meals = new ArrayList<>(mealsMap.values());
         return meals;
     }
 

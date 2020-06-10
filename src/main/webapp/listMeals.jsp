@@ -32,6 +32,7 @@
     </tr>
     </thead>
     <tbody>
+
     <jsp:useBean id="meals" scope="request" type="java.util.List"/>
     <c:forEach items="${meals}" var="meal">
         <tr class="${meal.excess ? 'red' : 'green'}">

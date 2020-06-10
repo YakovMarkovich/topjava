@@ -1,6 +1,5 @@
 package ru.javawebinar.topjava.web;
 
-import com.sun.org.glassfish.gmbal.Description;
 import org.slf4j.Logger;
 import ru.javawebinar.topjava.dao.MealsRepo;
 import ru.javawebinar.topjava.dao.MealsRepoImpl;
@@ -23,6 +22,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 public class MealServlet extends HttpServlet {
     private static final Logger log = getLogger(MealServlet.class);
+    private static final int MAGIC_NUMBER = 2000;
     private static String INSERT = "/meals.jsp";
     private static String EDIT = "/mealsEdit.jsp";
     private static String LIST_MEALS = "/listMeals.jsp";
@@ -37,6 +37,7 @@ public class MealServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String forward = "";
         String action = request.getParameter("action");
+        log.debug(action);
         ServletContext context = request.getServletContext();
         context.setAttribute("mealId", request.getParameter("mealId"));
         if (action != null && action.equalsIgnoreCase("delete")) {
@@ -48,13 +49,13 @@ public class MealServlet extends HttpServlet {
             forward = EDIT;
             int mealId = Integer.parseInt(request.getParameter("mealId"));
             Meal meal = repository.getMealById(mealId);
-            log.debug("55" + meal);
             request.setAttribute("meal", meal);
         } else if (action == null || action.equalsIgnoreCase("listUser")) {
             forward = LIST_MEALS;
             request.setAttribute("meals", createAllMealToList(repository.getAllMeals()));
         } else {
             forward = INSERT;
+            request.setAttribute("meals", createAllMealToList(repository.getAllMeals()));
         }
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);
@@ -76,7 +77,7 @@ public class MealServlet extends HttpServlet {
     }
 
     private List<MealTo> createAllMealToList(List<Meal> allMeals) {
-        return MealsUtil.filteredByStreams(allMeals, LocalTime.MIN, LocalTime.MAX, 2000);
+        return MealsUtil.filteredByStreams(allMeals, LocalTime.MIN, LocalTime.MAX, MAGIC_NUMBER);
     }
 
     private Meal mealUpdation(HttpServletRequest request, int id) {
