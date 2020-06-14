@@ -39,7 +39,6 @@ public class ProfileMealRestController extends MealRestController {
 
     @Override
     public void update(MealTo mealTo, Integer usId) {
-        System.out.println("Meal to from profile" + mealTo.getUserId() + mealTo);
         super.update(mealTo, userId);
     }
 
