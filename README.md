@@ -1,9 +1,8 @@
-Codacy Badge 
-Build Status
-
-
 Java Enterprise Online Project 
 ===============================
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0bc49947b368459092e38fe7595abf55)](https://app.codacy.com/manual/YakovMarkovich/topjava?utm_source=github.com&utm_medium=referral&utm_content=YakovMarkovich/topjava&utm_campaign=Badge_Grade_Settings)
+
 Разработка полнофункционального Spring/JPA Enterprise приложения c авторизацией и правами доступа на основе ролей с использованием наиболее популярных инструментов и технологий Java: Maven, Spring MVC, Security, JPA(Hibernate), REST(Jackson), Bootstrap (css,js), datatables, jQuery + plugins, Java 8 Stream and Time API и хранением в базах данных Postgresql и HSQLDB.
 
 ![topjava_structure](https://user-images.githubusercontent.com/13649199/27433714-8294e6fe-575e-11e7-9c41-7f6e16c5ebe5.jpg)
@@ -45,11 +44,9 @@ Java Enterprise Online Project
     -  <a href="https://blog.interlinked.org/tutorials/git.html">Git Overview</a>
     -  [Основы Git за 20 минут](https://www.youtube.com/watch?v=TMeZGvtQnT8)
     -  [Git - для новичков](https://www.youtube.com/watch?list=PLY4rE9dstrJyTdVJpv7FibSaXB4BHPInb&v=PEKN8NtBDQ0)
-    - [Руководство по написанию комментариев в коммитах](https://techrocks.ru/2019/12/02/writing-good-commit-messages)
 
 ##  ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 3. <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFZDdaaU5fZEo4X3c">Работа с проектом (выполнять инструкции)</a>
-- **ВНИМАНИЕ: выбирайте для проекта простой пусть без пробелов и русских букв, например (Windows) `c:\projects\topjava\`. Иначе впоследствии будут проблемы**
-- **Плагин уже Git Intergation не требуется и вкладку `Version control` в IDEA переименовали в `Git`**
+**ВНИМАНИЕ: выбирайте для проекта простой пусть без пробелов и русских букв, например (Windows) `c:\projects\topjava\`. Иначе впоследствии будут проблемы**
 ### Патч [prepare_to_HW0.patch](https://drive.google.com/file/d/1LNPpu9OkuCpfpD8ZJHO-o0vwu49p2i5M) (скачать и положить в каталог вашего проекта)
 
 > Проект постоянно улучшается, поэтому видео иногда отличается от кода проекта. Изменения указываю после видео: 
@@ -114,8 +111,7 @@ Java Enterprise Online Project
 -  <a href="http://habrahabr.ru/company/luxoft/blog/270383/">Шпаргалка Java Stream API</a>
 -  <a href="https://www.youtube.com/watch?v=hEyCK4ueBlc">Алексея Владыкин: Элементы функционального программирования в Java</a>
 -  <a href="https://www.youtube.com/watch?v=iD8H7cmxw_w">Yakov Fain о новом в Java 8</a>
--  <a href="http://stackoverflow.com/questions/28319064/java-8-best-way-to-transform-a-list-map-or-foreach">stream.map vs forEach</a
--  [Полное руководство по Java 8 Stream API в картинках и примерах](https://annimon.com/article/2778)    
+-  <a href="http://stackoverflow.com/questions/28319064/java-8-best-way-to-transform-a-list-map-or-foreach">stream.map vs forEach</a>
 -  Дополнительно
    - [Сергей Куксенко — Stream API, часть 1](https://www.youtube.com/watch?v=O8oN4KSZEXE)
    - [Сергей Куксенко — Stream API, часть 2](https://www.youtube.com/watch?v=i0Jr2l3jrDA)
@@ -126,13 +122,9 @@ Java Enterprise Online Project
   - без циклов по другим коллекциям
   - решение должно быть рабочим в общем случае (не только при запуске main)
 - через Stream API за 1 проход по исходному списку `meals.streem()`
-  - нельзя использовать внешние коллекции, не являющиеся частью коллектора или 2 раза проходить по исходному списку (в том числе модифицированному, например отфильтрованному).
+  - нельзя использовать внешние коллекции, не являющиеся частью коллектора или 2 раза проходить по исходному списку (его копиям).
     Т.е. в решении не должно быть 2 раза `meal.stream()` (в том числе неявно, в составных коллекторах)
   - возможно дополнительные проходы по частям списка
-
-Ресурсы:
-- [Java 8 Stream API, часть шестая: собственный коллектор](https://easyjava.ru/java/language/java-8-stream-api-chast-shestaya-sobstvennyj-kollektor)
-- [Руководство по Java 8 Stream API: Collector](https://annimon.com/article/2778#collector)
 
 ### Замечания по использованию Stream API:
 - Когда встречаешь что-то непривычное, приходится перестраивать мозги. Например, переход с процедурного на ООП программирование дается непросто. Те, кто не знает шаблонов (и не хотят учить) также их встречают плохо. Хорошая новость в том, что если это принять и начать использовать, то начинаешь получать от этого удовольствие. И тут главное не впасть в другую крайность:
@@ -158,13 +150,13 @@ Java Enterprise Online Project
 - 10: `System.out.println` нельзя делать нигде, кроме как в `main`. Позже введем логирование.
 - 11: Результаты, возвращаемые `UserMealsUtil.filteredByStreams` мы будем использовать [в нашем приложении](http://topjava.herokuapp.com/) для фильтрации по времени и отображения еды правильным цветом.
 - 12: Обращайте внимание на комментарии к вашим коммитам в git. Они должны быть короткие и информативные (лучше на english)
-- 13: Не полагайтесь в решении на то, что список еды будет подаваться отсортированным. Такого условия нет.
+- 13: Не полагайтесь в решении на то, что список будет подаваться отсортированным. Такого условия нет.
 -----
 ## [Пример 7-го занятия онлайн стажировки, несколько видео открыто](https://github.com/JavaOPs/topjava/blob/master/doc/lesson07.md)
 
 ### Полезные ресурсы
 > ВНИМАНИЕ:
->  - **ДЗ первого урока будет связано с [созданием небольшого CRUD приложения (в памяти, без DB) на JSP и сервлетах](https://danielniko.wordpress.com/2012/04/17/simple-crud-using-jsp-servlet-and-mysql/)**. Введение будет, но предварительное знакомство не помешает.
+>  - **ДЗ первого урока будет связано с [созданием небольшого CRUD приложения (в памяти, без DB) на JSP и сервлетах](http://danielniko.com/2012/04/17/simple-crud-using-jsp-servlet-and-mysql/)**. Введение будет, но предварительное знакомство не помешает.
 >  - основы JavaSсript необходимы для понимания проекта, начиная с 8-го занятия!
 
 Все остальное - опционально.
