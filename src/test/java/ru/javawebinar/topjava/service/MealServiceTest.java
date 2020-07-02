@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
@@ -45,7 +46,9 @@ public class MealServiceTest {
         assertThrows(NotFoundException.class, () -> service.delete(MEAL1_ID, ADMIN_ID));
     }
 
+
     @Test
+    @Transactional
     public void create() throws Exception {
         Meal created = service.create(getNew(), USER_ID);
         int newId = created.id();
@@ -61,6 +64,7 @@ public class MealServiceTest {
         MEAL_MATCHER.assertMatch(actual, ADMIN_MEAL1);
     }
 
+
     @Test
     public void getNotFound() throws Exception {
         assertThrows(NotFoundException.class, () -> service.get(NOT_FOUND, USER_ID));
@@ -72,6 +76,7 @@ public class MealServiceTest {
     }
 
     @Test
+    @Transactional
     public void update() throws Exception {
         Meal updated = getUpdated();
         service.update(updated, USER_ID);
@@ -79,6 +84,7 @@ public class MealServiceTest {
     }
 
     @Test
+    @Transactional
     public void updateNotOwn() throws Exception {
         assertThrows(NotFoundException.class, () -> service.update(MEAL1, ADMIN_ID));
     }
