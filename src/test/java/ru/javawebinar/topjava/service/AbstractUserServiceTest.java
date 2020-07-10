@@ -31,7 +31,7 @@ import static ru.javawebinar.topjava.UserTestData.*;
 public class UserServiceTest {
 
     @Autowired
-    private UserService service;
+    protected UserService service;
 
     @Autowired
     private CacheManager cacheManager;
