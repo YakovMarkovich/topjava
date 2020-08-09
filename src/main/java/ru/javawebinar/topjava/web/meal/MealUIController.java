@@ -16,7 +16,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/profile/meals")
 public class MealUIController extends AbstractMealController {
-
     @Override
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MealTo> getAll() {
